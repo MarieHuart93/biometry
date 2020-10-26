@@ -29,3 +29,14 @@ chart(bio, height ~ weight %col=% gender) +
   geom_point()
 ```
 
+On observe assez logiquement que les hommes ont une taille et une masse plus importante que celle des femmes.
+
+```{r}
+bio %>.%
+  mutate(., bmi = weight/(height/100)^2) %>.%
+  labelise(., label = list(bmi = "IMC"), units = list(bmi = ""))-> bio
+
+chart(bio, bmi ~ gender %fill=% gender) +
+  geom_violin(show.legend = FALSE)
+```
+
