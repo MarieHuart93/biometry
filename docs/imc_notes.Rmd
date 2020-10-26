@@ -57,8 +57,10 @@ bio %>.%
 
 ```{r}
 chart(bio, ~bmi_cat) +
-  geom_bar() 
+  geom_bar() +
+  ylab("Dénombrements")
 ```
+
 Les personnes en ayant un poids normal et les personnes en surpoids sont les 2 groupes majoritaire dans nos observations.
 
 ```{r}
