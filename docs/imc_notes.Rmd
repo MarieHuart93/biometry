@@ -1,0 +1,26 @@
+---
+title: "Carnet de note sur l'IMC"
+author: "Marie"
+date: "26/10/2020"
+output: 
+  html_document: 
+    toc: yes
+    fig_caption: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+# Objectifs
+
+Ce document traite du jeu de données **biometry** du package *BioDataScience*.
+
+# Analyses
+
+```{r}
+bio <- read("biometry", package = "BioDataScience", lang = "fr")
+```
+
