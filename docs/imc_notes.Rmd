@@ -46,11 +46,30 @@ Les diagrammes en violon montre que l'imc des hommes est plus élevé que celui 
 bio %>.% 
   mutate(.,
   bmi_cat = case_when(
-    bmi < 18.5 ~ "underweight",
-    bmi >= 18.5 & bmi < 25 ~ "normal weight",
-    bmi >= 25 & bmi < 30 ~ "overweight",
-    bmi >= 30 ~ "obese"),
+    bmi < 18.5 ~ "sous-poids",
+    bmi >= 18.5 & bmi < 25 ~ "poids normal",
+    bmi >= 25 & bmi < 30 ~ "surpoids",
+    bmi >= 30 ~ "obèse"),
   bmi_cat = factor(bmi_cat,
-  levels = c("underweight", "normal weight", "overweight", "obese"))) -> bio
+  levels = c("sous-poids", "poids normal", "surpoids", "obèse"))) %>.%
+  labelise(., label = list(bmi_cat = "Catégories de l'IMC"))-> bio
+```
+
+```{r}
+chart(bio, ~bmi_cat) +
+  geom_bar() 
+```
+Les personnes en ayant un poids normal et les personnes en surpoids sont les 2 groupes majoritaire dans nos observations.
+
+```{r}
+chart(bio, bmi_cat ~ age %fill=% bmi_cat) +
+  ggridges::geom_density_ridges()
+```
+
+On observe que l'augementation de l'age influence l'imc.
+
+```{r}
+chart(bio, bmi ~ age) +
+  geom_point() 
 ```
 
