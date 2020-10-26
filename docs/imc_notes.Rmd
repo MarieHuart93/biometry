@@ -41,3 +41,16 @@ chart(bio, bmi ~ gender %fill=% gender) +
 ```
 
 Les diagrammes en violon montre que l'imc des hommes est plus élevé que celui des femmes.
+
+```{r}
+bio %>.% 
+  mutate(.,
+  bmi_cat = case_when(
+    bmi < 18.5 ~ "underweight",
+    bmi >= 18.5 & bmi < 25 ~ "normal weight",
+    bmi >= 25 & bmi < 30 ~ "overweight",
+    bmi >= 30 ~ "obese"),
+  bmi_cat = factor(bmi_cat,
+  levels = c("underweight", "normal weight", "overweight", "obese"))) -> bio
+```
+
