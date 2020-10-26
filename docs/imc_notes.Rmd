@@ -24,3 +24,8 @@ Ce document traite du jeu de données **biometry** du package *BioDataScience*.
 bio <- read("biometry", package = "BioDataScience", lang = "fr")
 ```
 
+```{r}
+chart(bio, height ~ weight %col=% gender) +
+  geom_point()
+```
+
