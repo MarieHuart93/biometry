@@ -64,6 +64,13 @@ chart(bio, ~bmi_cat) +
 Les personnes en ayant un poids normal et les personnes en surpoids sont les 2 groupes majoritaire dans nos observations.
 
 ```{r}
+chart(bio, ~ age) +
+  geom_histogram()
+```
+
+On observe 2 groupes avec un groupe de jeune adulte puis un groupe d'adulte. Nous pouvons émettre l'hypothèse qu'il s'agit des enfants et des parents
+
+```{r}
 chart(bio, bmi_cat ~ age %fill=% bmi_cat) +
   ggridges::geom_density_ridges()
 ```
@@ -72,6 +79,7 @@ On observe que l'augementation de l'age influence l'imc.
 
 ```{r}
 chart(bio, bmi ~ age) +
-  geom_point() 
+  geom_point() +
+  geom_smooth()
 ```
 
